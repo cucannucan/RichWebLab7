@@ -1,0 +1,34 @@
+<h2>Tasks</h2>
+
+<!-- Search Input -->
+<div>
+  <input [(ngModel)]="searchTerm" placeholder="Search tasks..." />
+</div>
+
+<!-- Add New Task Form -->
+<form (ngSubmit)="addNewTask()">
+  <div>
+    <input [(ngModel)]="newTask" name="task" placeholder="Enter new task" required />
+  </div>
+  <div>
+    <input [(ngModel)]="newTaskTime" name="time" type="datetime-local" placeholder="Set a time for the task" required />
+  </div>
+  <div>
+    <button type="submit" [disabled]="!newTask.trim()">Add Task</button>
+  </div>
+</form>
+
+<!-- Display the list of filtered tasks -->
+<div *ngFor="let todo of filteredTodos">
+  <div class="task-item">
+    <h3>{{ todo.task }}</h3>
+    <p>Status: 
+      <span [ngClass]="{ completed: todo.isCompleted }">
+        {{ todo.isCompleted ? 'Completed' : 'Not Completed' }}
+      </span>
+    </p>
+    <p *ngIf="todo.time">Scheduled for: {{ todo.time | date:'short' }}</p> <!-- Display time -->
+    <button (click)="editTask(todo.id)">Edit Task</button>
+    <button (click)="deleteTask(todo.id)">Delete Task</button>
+  </div>
+</div>

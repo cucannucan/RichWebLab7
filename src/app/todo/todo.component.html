@@ -1,0 +1,10 @@
+<div *ngIf="todo; else taskNotFound">
+  <h2>Edit Task</h2>
+  <input [(ngModel)]="updatedTask" placeholder="Edit task details" />
+  <button (click)="saveTask()">Save</button>
+  <button (click)="deleteTodo()">Delete Task</button>
+</div>
+
+<ng-template #taskNotFound>
+  <p>Task not found!</p>
+</ng-template>
