@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/angular-todo-app",
             "index": "src/index.html",
+            "baseHref": "/RichWebLab7/",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -94,6 +95,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
